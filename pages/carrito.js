@@ -6,11 +6,13 @@ import styles from "../styles/Carrito.module.css";
 const Carrito = ({carrito, actualizarCantidad, eliminarProducto}) => { 
 
   const [total, setTotal] = useState(0);  
-  
+
   useEffect(() => { 
     const calculoTotal = carrito.reduce((total, producto) => total + (producto.cantidad * producto.precio),0 )
     setTotal(calculoTotal);
   }, [carrito])
+
+  console.log(carrito);
   
 
   return (
@@ -22,7 +24,7 @@ const Carrito = ({carrito, actualizarCantidad, eliminarProducto}) => {
                 <h2>Articulos</h2>
                 {carrito.length === 0 ? 'Carrito Vacio' : (
                     carrito.map(producto =>(
-                        <div key={producto._id} className={styles.producto}>
+                        <div key={producto.id} className={styles.producto}>
                             <div>
                                 <Image layout="responsive" width={250} height={500} src={producto.imagen} alt={producto.nombre}/>
                             </div>
@@ -37,7 +39,7 @@ const Carrito = ({carrito, actualizarCantidad, eliminarProducto}) => {
                                         className={styles.select}
                                         onChange={(e) => actualizarCantidad({
                                             cantidad: e.target.value,
-                                            id: producto._id,
+                                            id: producto.id,
                                         })
                                     }
                                     >
@@ -57,7 +59,7 @@ const Carrito = ({carrito, actualizarCantidad, eliminarProducto}) => {
                             <button  
                                 type="button"
                                 className={styles.eliminar}
-                                onClick={() => eliminarProducto(producto._id)} 
+                                onClick={() => eliminarProducto(producto.id)} 
                             > 
                                 X
                             </button>
