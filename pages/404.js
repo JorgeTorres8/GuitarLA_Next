@@ -10,7 +10,7 @@ const NoEncontrado = () => {
             Volver al Inicio
         </Link>
     </div>
-   )
+  )
    
 }
 

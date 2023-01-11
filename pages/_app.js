@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
         const carritoActualizado = carrito.filter((articulo) => articulo.id !== id);
         setCarrito(carritoActualizado);
         Swal.fire({
-          title:'¡Elimiado!',
+          title:'¡Eliminado!',
           text:'Quitaste esta guitarra de tu carrito de compras',
           icon:'success',
           customClass: 'swal-wide',}
